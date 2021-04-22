@@ -1,6 +1,6 @@
 package ru.job4j.tracker;
 
-public class item {
+public class Item {
     private int id;
     private String name;
 

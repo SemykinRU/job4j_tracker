@@ -1,20 +1,20 @@
 package ru.job4j.tracker;
 
-public class tracker {
-    private final item[] items = new item[100];
+public class Tracker {
+    private final Item[] Items = new Item[100];
     private int ids = 1;
     private int size = 0;
 
-    public item add(item item) {
+    public Item add(Item item) {
         item.setId(ids++);
-        items[size++] = item;
+        Items[size++] = item;
         return item;
     }
 
-    public item findById(int id) {
-        item rsl = null;
+    public Item findById(int id) {
+        Item rsl = null;
         for (int index = 0; index < size; index++) {
-            item item = items[index];
+            Item item = Items[index];
             if (item.getId() == id) {
                 rsl = item;
                 break;

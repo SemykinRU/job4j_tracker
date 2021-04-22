@@ -4,14 +4,14 @@ import org.junit.Test;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-public class trackerTest {
+public class TrackerTest {
     @Test
     public void whenAddNewItemThenTrackerHasSameItem() {
-        tracker tracker = new tracker();
-        item item = new item();
+        Tracker tracker = new Tracker();
+        Item item = new Item();
         item.setName("test1");
         tracker.add(item);
-        ru.job4j.tracker.item result = tracker.findById(item.getId());
+        Item result = tracker.findById(item.getId());
         assertThat(result.getName(), is(item.getName()));
     }
 }
