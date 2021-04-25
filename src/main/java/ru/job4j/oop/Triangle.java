@@ -26,7 +26,8 @@ public class Triangle {
         double ac = first.distance(third);
         double bc = second.distance(third);
         if (this.exist(ab, ac, bc)) {
-          return Math.sqrt(this.period(ab, ac, bc) * (this.period(ab, ac, bc) - ab) * (this.period(ab, ac, bc) - ac) * (this.period(ab, ac, bc) - bc));
+            double p = period(ab, ac, bc);
+            return Math.sqrt(p * (p - ab) * (p - ac) * (p - bc));
         }
         return -1;
     }
