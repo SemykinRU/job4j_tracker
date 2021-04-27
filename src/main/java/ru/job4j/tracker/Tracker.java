@@ -1,42 +1,55 @@
 package ru.job4j.tracker;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Tracker {
-    private final Item[] Items = new Item[100];
+    private final Item[] items = new Item[100];
     private int ids = 1;
     private int size = 0;
 
     public Item add(Item item) {
         item.setId(ids++);
-        Items[size++] = item;
+        items[size++] = item;
         return item;
     }
 
     public Item[] findAll(){
-        return Arrays.copyOf(this.Items,size);
+        return Arrays.copyOf(this.items,size);
     }
 
     public Item[] findByName(String key) {
         Item[] rsl = new Item[size];
         int index = 0;
         for (int i = 0; i < size; i++) {
-            if (Items[i].getName().equals(key))
-                rsl[index++] = Items[i];
+            if (items[i].getName().equals(key))
+                rsl[index++] = items[i];
         }
         return Arrays.copyOf(rsl, index);
     }
 
-    public Item findById(int id) {
-        Item rsl = null;
+    private int indexOf(int id) {
+        int rsl = -1;
         for (int index = 0; index < size; index++) {
-            Item item = Items[index];
-            if (item.getId() == id) {
-                rsl = item;
+            if (items[index].getId() == id) {
+                rsl = index;
                 break;
             }
         }
         return rsl;
+    }
+
+    public Item findById(int id) {
+        int index = indexOf(id);
+        return index != -1 ? items[index] : null;
+    }
+
+    public boolean replace(int id, Item item) {
+        if (indexOf(id) != -1) {
+            int index = indexOf(id);
+            items[index] = item;
+            items[index].setId(id);
+            return true;
+        }
+        return false;
     }
 }
