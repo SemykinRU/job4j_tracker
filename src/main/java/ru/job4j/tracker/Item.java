@@ -36,6 +36,7 @@ public class Item {
         this.name = name;
     }
 
+    /*Переопределил метод ранее*/
     @Override
     public String toString() {
         return "Item{" +
