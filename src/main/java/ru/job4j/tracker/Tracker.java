@@ -44,6 +44,7 @@ public class Tracker {
     }
 
     public boolean replace(int id, Item item) {
+        /*Валидация была реализована ранее*/
         if (indexOf(id) != -1) {
             int index = indexOf(id);
             items[index] = item;
@@ -54,6 +55,7 @@ public class Tracker {
     }
 
     public boolean delete(int id) {
+        /*Валидация была реализована ранее*/
         if (indexOf(id) != -1) {
             System.arraycopy(items, indexOf(id) + 1, items, indexOf(id), size - indexOf(id));
             items[size - 1] = null;
