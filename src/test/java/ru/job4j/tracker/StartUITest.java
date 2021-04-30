@@ -111,5 +111,27 @@ public class StartUITest {
                 "1. === Exit ===" + System.lineSeparator()));
     }
 
+    @Test
+    public void whenAllMenu() {
+        Output out = new StubOutput();
+        Input in = new StubInput(new String[]{"6"});
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {new CreateAction(out),
+                new ShowAllItemAction(out),
+                new ReplaceItemAction(out),
+                new DeleteItemAction(out),
+                new FindItemByIDAction(out),
+                new FindItemByNameAction(out),
+                new CloseAction()};
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(out.toString(), is("Menu." + System.lineSeparator() +
+                "0. Add new Item" + System.lineSeparator() +
+                "1. === Show all items ====" + System.lineSeparator() +
+                "2. === Edit item ====" + System.lineSeparator() +
+                "3. === Delete item ====" + System.lineSeparator() +
+                "4. === Find item by id ====" + System.lineSeparator() +
+                "5. === Find items by name ====" + System.lineSeparator() +
+                "6. === Exit ===" + System.lineSeparator()));
+    }
 
 }
