@@ -96,13 +96,13 @@ public class StartUITest {
         Output out = new StubOutput();
         Input in = new StubInput(new String[]{"0", "1"});
         Tracker tracker = new Tracker();
-        tracker.add(new Item("Test100"));
+        Item item = tracker.add(new Item("Test100"));
         UserAction[] actions = {new ShowAllItemAction(out), new CloseAction()};
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is("Menu." + System.lineSeparator() +
                                             "0. === Show all items ====" + System.lineSeparator() +
                                             "1. === Exit ===" + System.lineSeparator() +
-                                            "Item{id=1, name='Test100'}" + System.lineSeparator() +
+                                            item + System.lineSeparator() +
                                             "Menu." + System.lineSeparator() +
                                             "0. === Show all items ====" + System.lineSeparator() +
                                             "1. === Exit ===" + System.lineSeparator()));
@@ -131,13 +131,13 @@ public class StartUITest {
         String name = "Test10";
         Input in = new StubInput(new String[]{"0", name, "1"});
         Tracker tracker = new Tracker();
-        tracker.add(new Item(name));
+        Item item = tracker.add(new Item(name));
         UserAction[] actions = {new FindItemByNameAction(out), new CloseAction()};
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is("Menu." + System.lineSeparator() +
                                             "0. === Find items by name ====" + System.lineSeparator() +
                                             "1. === Exit ===" + System.lineSeparator() +
-                                            "Item{id=1, name='Test10'}" + System.lineSeparator() +
+                                            item + System.lineSeparator() +
                                             "Menu." + System.lineSeparator() +
                                             "0. === Find items by name ====" + System.lineSeparator() +
                                             "1. === Exit ===" + System.lineSeparator()));
@@ -166,15 +166,14 @@ public class StartUITest {
         int id = 11;
         Input in = new StubInput(new String[]{"0", String.valueOf(id), "1"});
         Tracker tracker = new Tracker();
-        Item item = new Item("Test220");
-        tracker.add(item);
+        Item item = tracker.add(new Item("Test220"));
         item.setId(id);
         UserAction[] actions = {new FindItemByIDAction(out), new CloseAction()};
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is("Menu." + System.lineSeparator() +
                                             "0. === Find item by id ====" + System.lineSeparator() +
                                             "1. === Exit ===" + System.lineSeparator() +
-                                            "Item{id=11, name='Test220'}" + System.lineSeparator() +
+                                            item + System.lineSeparator() +
                                             "Menu." + System.lineSeparator() +
                                             "0. === Find item by id ====" + System.lineSeparator() +
                                             "1. === Exit ===" + System.lineSeparator()));
