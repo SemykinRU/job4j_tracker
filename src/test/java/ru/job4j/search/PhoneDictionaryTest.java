@@ -1,5 +1,6 @@
 package ru.job4j.search;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -17,5 +18,14 @@ public class PhoneDictionaryTest {
         );
         ArrayList<Person> persons = phones.find("Petr");
         assertThat(persons.get(0).getSurname(), is("Arsentev"));
+    }
+
+    @Test
+    public void whenNotFindThen() {
+        PhoneDictionary phones = new PhoneDictionary();
+        phones.add(
+                new Person("Petr", "Arsentev", "534872", "Bryansk")
+        );
+        assertThat(phones.find("Tomos"), is(new ArrayList<>()));
     }
 }
