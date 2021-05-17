@@ -2,7 +2,9 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
+
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.nullValue;
@@ -17,7 +19,7 @@ public class StartUITest {
                 new String[] {"0", "Item name", "1"}
         );
         Tracker tracker = new Tracker();
-        ArrayList<UserAction> actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
         actions.add(new CreateAction(out));
         actions.add(new CloseAction());
         new StartUI(out).init(in, tracker, actions);
@@ -34,7 +36,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0", id, replacedName, "1"}
         );
-        ArrayList<UserAction> actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
         actions.add(new ReplaceItemAction(out));
         actions.add(new CloseAction());
         new StartUI(out).init(in, tracker, actions);
@@ -50,7 +52,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0", id, "1"}
         );
-        ArrayList<UserAction> actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
         actions.add(new DeleteItemAction(out));
         actions.add(new CloseAction());
         new StartUI(out).init(in, tracker, actions);
@@ -64,7 +66,7 @@ public class StartUITest {
                 new String[] {"0"}
         );
         Tracker tracker = new Tracker();
-        ArrayList<UserAction> actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
         actions.add(new CloseAction());
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
@@ -78,7 +80,7 @@ public class StartUITest {
        Output out = new StubOutput();
        Input in = new StubInput(new String[]{"0", "1"});
        Tracker tracker = new Tracker();
-       ArrayList<UserAction> actions = new ArrayList<>();
+       List<UserAction> actions = new ArrayList<>();
        actions.add(new ShowAllItemAction(out));
        actions.add(new CloseAction());
        new StartUI(out).init(in, tracker, actions);
@@ -97,7 +99,7 @@ public class StartUITest {
         Input in = new StubInput(new String[]{"0", "1"});
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Test100"));
-        ArrayList<UserAction> actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
         actions.add(new ShowAllItemAction(out));
         actions.add(new CloseAction());
         new StartUI(out).init(in, tracker, actions);
@@ -116,7 +118,7 @@ public class StartUITest {
         String name = "Test10";
         Input in = new StubInput(new String[]{"0", name, "1"});
         Tracker tracker = new Tracker();
-        ArrayList<UserAction> actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
         actions.add(new FindItemByNameAction(out));
         actions.add(new CloseAction());
         new StartUI(out).init(in, tracker, actions);
@@ -136,7 +138,7 @@ public class StartUITest {
         Input in = new StubInput(new String[]{"0", name, "1"});
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item(name));
-        ArrayList<UserAction> actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
         actions.add(new FindItemByNameAction(out));
         actions.add(new CloseAction());
         new StartUI(out).init(in, tracker, actions);
@@ -155,7 +157,7 @@ public class StartUITest {
         int id = 0;
         Input in = new StubInput(new String[]{"0", String.valueOf(id), "1"});
         Tracker tracker = new Tracker();
-        ArrayList<UserAction> actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
         actions.add(new FindItemByIDAction(out));
         actions.add(new CloseAction());
         new StartUI(out).init(in, tracker, actions);
@@ -176,7 +178,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Test220"));
         item.setId(id);
-        ArrayList<UserAction> actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
         actions.add(new FindItemByIDAction(out));
         actions.add(new CloseAction());
         new StartUI(out).init(in, tracker, actions);
