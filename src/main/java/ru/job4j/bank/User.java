@@ -2,8 +2,18 @@ package ru.job4j.bank;
 
 import java.util.Objects;
 
+/**
+ * Клас описывает модель клиента банка.
+ */
 public class User {
+    /**
+     * Поле хранящее номер пасспорта клинет,
+     * должно быть всегда уникальным.
+     */
     private String passport;
+    /**
+     * Поле хранящее имя нашего клиента.
+     */
     private String username;
 
     public User(String passport, String username) {
