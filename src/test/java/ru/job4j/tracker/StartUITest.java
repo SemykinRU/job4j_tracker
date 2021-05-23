@@ -70,8 +70,8 @@ public class StartUITest {
         actions.add(new CloseAction());
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
-                "Menu." + System.lineSeparator() +
-                        "0. === Exit ===" + System.lineSeparator()
+                "Menu." + System.lineSeparator()
+                        + "0. === Exit ===" + System.lineSeparator()
         ));
     }
 
@@ -84,13 +84,13 @@ public class StartUITest {
        actions.add(new ShowAllItemAction(out));
        actions.add(new CloseAction());
        new StartUI(out).init(in, tracker, actions);
-       assertThat(out.toString(), is("Menu." + System.lineSeparator() +
-                                            "0. === Show all items ====" + System.lineSeparator() +
-                                            "1. === Exit ===" + System.lineSeparator() +
-                                            "Хранилище еще не содержит заявок" + System.lineSeparator() +
-                                            "Menu." + System.lineSeparator() +
-                                            "0. === Show all items ====" + System.lineSeparator() +
-                                            "1. === Exit ===" + System.lineSeparator()));
+       assertThat(out.toString(), is("Menu." + System.lineSeparator()
+               + "0. === Show all items ====" + System.lineSeparator()
+               + "1. === Exit ===" + System.lineSeparator()
+               + "Хранилище еще не содержит заявок" + System.lineSeparator()
+               + "Menu." + System.lineSeparator()
+               + "0. === Show all items ====" + System.lineSeparator()
+               + "1. === Exit ===" + System.lineSeparator()));
     }
 
     @Test
@@ -103,13 +103,13 @@ public class StartUITest {
         actions.add(new ShowAllItemAction(out));
         actions.add(new CloseAction());
         new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is("Menu." + System.lineSeparator() +
-                                            "0. === Show all items ====" + System.lineSeparator() +
-                                            "1. === Exit ===" + System.lineSeparator() +
-                                            item + System.lineSeparator() +
-                                            "Menu." + System.lineSeparator() +
-                                            "0. === Show all items ====" + System.lineSeparator() +
-                                            "1. === Exit ===" + System.lineSeparator()));
+        assertThat(out.toString(), is("Menu." + System.lineSeparator()
+                + "0. === Show all items ====" + System.lineSeparator()
+                + "1. === Exit ===" + System.lineSeparator()
+                + item + System.lineSeparator()
+                + "Menu." + System.lineSeparator()
+                + "0. === Show all items ====" + System.lineSeparator()
+                + "1. === Exit ===" + System.lineSeparator()));
     }
 
     @Test
@@ -122,13 +122,15 @@ public class StartUITest {
         actions.add(new FindItemByNameAction(out));
         actions.add(new CloseAction());
         new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is("Menu." + System.lineSeparator() +
-                                            "0. === Find items by name ====" + System.lineSeparator() +
-                                            "1. === Exit ===" + System.lineSeparator() +
-                                            "Заявки с именем: " + name + " не найдены." + System.lineSeparator() +
-                                            "Menu." + System.lineSeparator() +
-                                            "0. === Find items by name ====" + System.lineSeparator() +
-                                            "1. === Exit ===" + System.lineSeparator()));
+        assertThat(out.toString(), is("Menu." + System.lineSeparator()
+                + "0. === Find items by name ===="
+                + System.lineSeparator() + "1. === Exit ==="
+                + System.lineSeparator() + "Заявки с именем: "
+                + name + " не найдены." + System.lineSeparator()
+                + "Menu."
+                + System.lineSeparator() + "0. === Find items by name ===="
+                + System.lineSeparator() + "1. === Exit ==="
+                + System.lineSeparator()));
     }
 
     @Test
@@ -142,13 +144,14 @@ public class StartUITest {
         actions.add(new FindItemByNameAction(out));
         actions.add(new CloseAction());
         new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is("Menu." + System.lineSeparator() +
-                                            "0. === Find items by name ====" + System.lineSeparator() +
-                                            "1. === Exit ===" + System.lineSeparator() +
-                                            item + System.lineSeparator() +
-                                            "Menu." + System.lineSeparator() +
-                                            "0. === Find items by name ====" + System.lineSeparator() +
-                                            "1. === Exit ===" + System.lineSeparator()));
+        assertThat(out.toString(), is("Menu." + System.lineSeparator()
+                + "0. === Find items by name ===="
+                + System.lineSeparator() + "1. === Exit ==="
+                + System.lineSeparator() + item
+                + System.lineSeparator() + "Menu."
+                + System.lineSeparator() + "0. === Find items by name ===="
+                + System.lineSeparator() + "1. === Exit ==="
+                + System.lineSeparator()));
     }
 
     @Test
@@ -161,13 +164,15 @@ public class StartUITest {
         actions.add(new FindItemByIDAction(out));
         actions.add(new CloseAction());
         new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is("Menu." + System.lineSeparator() +
-                                            "0. === Find item by id ====" + System.lineSeparator() +
-                                            "1. === Exit ===" + System.lineSeparator() +
-                                            "Заявка с введенным id: " + id + " не найдена." + System.lineSeparator() +
-                                            "Menu." + System.lineSeparator() +
-                                            "0. === Find item by id ====" + System.lineSeparator() +
-                                            "1. === Exit ===" + System.lineSeparator()));
+        assertThat(out.toString(), is("Menu." + System.lineSeparator()
+                + "0. === Find item by id ===="
+                + System.lineSeparator() + "1. === Exit ==="
+                + System.lineSeparator() + "Заявка с введенным id: " + id
+                + " не найдена." + System.lineSeparator()
+                + "Menu." + System.lineSeparator()
+                + "0. === Find item by id ===="
+                + System.lineSeparator() + "1. === Exit ==="
+                + System.lineSeparator()));
     }
 
     @Test
@@ -182,12 +187,13 @@ public class StartUITest {
         actions.add(new FindItemByIDAction(out));
         actions.add(new CloseAction());
         new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is("Menu." + System.lineSeparator() +
-                                            "0. === Find item by id ====" + System.lineSeparator() +
-                                            "1. === Exit ===" + System.lineSeparator() +
-                                            item + System.lineSeparator() +
-                                            "Menu." + System.lineSeparator() +
-                                            "0. === Find item by id ====" + System.lineSeparator() +
-                                            "1. === Exit ===" + System.lineSeparator()));
+        assertThat(out.toString(), is("Menu." + System.lineSeparator()
+                + "0. === Find item by id ===="
+                + System.lineSeparator() + "1. === Exit ==="
+                + System.lineSeparator() + item
+                + System.lineSeparator() + "Menu."
+                + System.lineSeparator() + "0. === Find item by id ===="
+                + System.lineSeparator() + "1. === Exit ==="
+                + System.lineSeparator()));
     }
 }

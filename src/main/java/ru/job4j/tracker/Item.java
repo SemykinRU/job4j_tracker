@@ -9,7 +9,7 @@ public class Item implements Comparable<Item> {
     private String name;
     private LocalDateTime created = LocalDateTime.now();
 
-    public Item() {}
+    public Item() { }
 
     public  Item(String name) {
         this.name = name;
@@ -32,7 +32,9 @@ public class Item implements Comparable<Item> {
         return name;
     }
 
-    public LocalDateTime getCreated(){return this.created;}
+    public LocalDateTime getCreated() {
+        return this.created;
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -40,16 +42,21 @@ public class Item implements Comparable<Item> {
 
     @Override
     public String toString() {
-        return "Item{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return "Item{"
+                + "id=" + id
+                + ", name='"
+                + name + '\''
+                + '}';
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Item item = (Item) o;
         return id == item.id;
     }

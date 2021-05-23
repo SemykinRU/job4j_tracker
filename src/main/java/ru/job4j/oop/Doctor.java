@@ -9,5 +9,7 @@ public class Doctor extends Profession {
         this.work = work;
     }
 
-    public boolean getWork() {return this.work;}
+    public boolean getWork() {
+        return this.work;
+    }
 }

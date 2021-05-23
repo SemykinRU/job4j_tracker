@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 public class ItemTest {
 
     @Test
-    public void whenSortByID () {
+    public void whenSortByID() {
         List<Item> actual = Arrays.asList(
                 new Item(3, "item 3"),
                 new Item(1, "item 1"),
@@ -29,7 +29,7 @@ public class ItemTest {
     }
 
     @Test
-    public void whenReversSortByID () {
+    public void whenReversSortByID() {
         List<Item> actual = Arrays.asList(
                 new Item(3, "item 3"),
                 new Item(1, "item 1"),

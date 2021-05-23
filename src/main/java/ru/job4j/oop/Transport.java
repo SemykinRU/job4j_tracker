@@ -10,7 +10,8 @@ public class Transport {
         Vehicle bus2 = new Bus();
 
         Vehicle[] array = {plane1, plane2, train1, train2, bus1, bus2};
-        for(Vehicle vehicle : array) {
+
+        for (Vehicle vehicle : array) {
             vehicle.passengers(20);
         }
     }

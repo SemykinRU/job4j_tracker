@@ -10,7 +10,7 @@ public class SingleTracker {
 
     }
 
-    public SingleTracker getTracker () {
+    public SingleTracker getTracker() {
         if (singleTracker == null) {
             singleTracker = new SingleTracker();
         }
