@@ -7,29 +7,23 @@ public class FreezeStr {
     public static boolean eq(String left, String right) {
         char[] leftArray = left.toCharArray();
         char[] rightArray = right.toCharArray();
-        int count = 1;
-        Map<Character, Integer> leftMap = new HashMap<>();
-        Map<Character, Integer> rightMap = new HashMap<>();
+        int count;
+        Map<Character, Integer> maps = new HashMap<>();
         for (char value : leftArray) {
-            if (leftMap.containsKey(value)) {
-                count += leftMap.get(value);
-                leftMap.replace(value, count);
-                count = 1;
-                continue;
-            }
-            leftMap.put(value, count);
+            count = maps.containsKey(value) ? maps.get(value) + 1 : 1;
+            maps.put(value, count);
         }
-
         for (char value : rightArray) {
-            if (rightMap.containsKey(value)) {
-                count += rightMap.get(value);
-                rightMap.replace(value, count);
-                count = 1;
-                continue;
+            if (!maps.containsKey(value)) {
+                return false;
             }
-            rightMap.put(value, count);
+            count = maps.get(value);
+            if (count == 1) {
+                maps.remove(value);
+            } else if (count > 1) {
+                maps.replace(value, count - 1);
+            }
         }
-
-        return leftMap.equals(rightMap);
+        return maps.size() == 0;
     }
 }
