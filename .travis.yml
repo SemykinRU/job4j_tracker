@@ -1,7 +1,10 @@
 # используем язык java. Travis CI поддерживает другие языки тоже.
 language: java
+install: true
+script:
+  - mvn install
 jdk:
-  - openjdk14
+  - openjdk16
 
 # используем режим обычного пользователя для сборки проекта.
 sudo: false
