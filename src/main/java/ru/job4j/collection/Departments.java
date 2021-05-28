@@ -16,7 +16,7 @@ public class Departments {
     }
 
     public static void sortAsc(List<String> orgs) {
-         orgs.sort(new DepAscComp().thenComparing(new DepDescComp()));
+         Collections.sort(orgs);
     }
 
     public static void sortDesc(List<String> orgs) {
