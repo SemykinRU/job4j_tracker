@@ -61,8 +61,8 @@ public class Address {
         Address address = (Address) o;
         return home == address.home
                 && apartment == address.apartment
-                && city.equals(address.city)
-                && street.equals(address.street);
+                && Objects.equals(city, address.city)
+                && Objects.equals(street, address.street);
     }
 
     @Override
