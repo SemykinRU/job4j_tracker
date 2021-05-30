@@ -9,7 +9,7 @@ public class LambdaUsage {
                     + right.length()
                     + " меняется со стройкой с размером "
                     + left.length());
-            return right.length() - left.length();
+            return Integer.compare(right.length(), left.length());
         };
     }
 }
