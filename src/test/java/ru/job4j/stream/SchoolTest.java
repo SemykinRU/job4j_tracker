@@ -70,19 +70,17 @@ public class SchoolTest {
     @Test
     public void studentMap() {
         List<Student> students = List.of(
-                new Student(70, "Surname1"),
+                new Student(50, "Surname1"),
                 new Student(70, "Surname2"),
-                new Student(70, "Surname3"),
+                new Student(75, "Surname3"),
                 new Student(50, "Surname2"),
-                new Student(20, "Surname1")
+                new Student(55, "Surname1")
         );
         School sc = new School();
-        Map<String, List<Student>> expected = Map.of(
-                "Surname1", Arrays.asList(new Student(70, "Surname1"),
-                                        new Student(20, "Surname1")),
-                "Surname2", Arrays.asList(new Student(70, "Surname2"),
-                                        new Student(50, "Surname2")),
-                "Surname3", Arrays.asList(new Student(70, "Surname3"))
+        Map<String, Student> expected = Map.of(
+                "Surname1", new Student(55, "Surname1"),
+                "Surname2", new Student(70, "Surname2"),
+                "Surname3", new Student(75, "Surname3")
         );
         assertThat(sc.studentMap(students), is(expected));
     }
