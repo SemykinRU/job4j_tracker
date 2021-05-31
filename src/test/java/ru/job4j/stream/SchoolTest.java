@@ -82,7 +82,7 @@ public class SchoolTest {
                                         new Student(20, "Surname1")),
                 "Surname2", Arrays.asList(new Student(70, "Surname2"),
                                         new Student(50, "Surname2")),
-                "Surname3",Arrays.asList(new Student(70, "Surname3"))
+                "Surname3", Arrays.asList(new Student(70, "Surname3"))
         );
         assertThat(sc.studentMap(students), is(expected));
     }
