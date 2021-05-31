@@ -30,7 +30,7 @@ public class JobTest {
                 new Job("Add task", 0)
         );
         actual.sort(new SortJobByName());
-        List<Job> expected = Arrays.asList(
+        List<Job> expected = List.of(
                 new Job("Add task", 0),
                 new Job("Fix bug", 1),
                 new Job("Impl task", 4)
@@ -46,7 +46,7 @@ public class JobTest {
                 new Job("Add task", 0)
         );
         actual.sort(new SortJobByName());
-        List<Job> expected = Arrays.asList(
+        List<Job> expected = List.of(
                 new Job("Add task", 0),
                 new Job("Fix bug", 1),
                 new Job("Impl task", 4)
@@ -90,7 +90,7 @@ public class JobTest {
                 new Job("Fixed", 1)
         );
         actual.sort(new SortJobByPriority().thenComparing(new SortJobByName()));
-        List<Job> expected = Arrays.asList(
+        List<Job> expected = List.of(
                 new Job("Add task", 0),
                 new Job("Fix bug", 1),
                 new Job("Fixed", 1),
@@ -112,7 +112,7 @@ public class JobTest {
                 new Job("Fixed", 1)
         );
         actual.sort(new SortJobByName().thenComparing(new SortJobByPriority()));
-        List<Job> expected = Arrays.asList(
+        List<Job> expected = List.of(
                 new Job("Add task", 0),
                 new Job("Any task", 5),
                 new Job("Fix bug", 1),
@@ -134,7 +134,7 @@ public class JobTest {
                 new Job("Fixed", 1)
         );
         actual.sort(new JobDescByPriority().thenComparing(new JobDescByName()));
-        List<Job> expected = Arrays.asList(
+        List<Job> expected = List.of(
                 new Job("Any task", 5),
                 new Job("Impl task", 4),
                 new Job("Impl task", 3),
@@ -156,7 +156,7 @@ public class JobTest {
                 new Job("Fixed", 1)
         );
         actual.sort(new JobDescByName().thenComparing(new JobDescByPriority()));
-        List<Job> expected = Arrays.asList(
+        List<Job> expected = List.of(
                 new Job("Impl task", 4),
                 new Job("Impl task", 3),
                 new Job("Fixed", 1),
