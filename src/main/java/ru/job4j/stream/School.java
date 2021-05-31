@@ -16,6 +16,6 @@ public class School {
         return students.stream()
                 .collect(Collectors.toMap(Student::getSurname,
                         x -> x,
-                        (x, y) -> x.getScore() > y.getScore() ? x : y));
+                        (x, y) -> x));
     }
 }

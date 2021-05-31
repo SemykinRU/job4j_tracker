@@ -78,7 +78,7 @@ public class SchoolTest {
         );
         School sc = new School();
         Map<String, Student> expected = Map.of(
-                "Surname1", new Student(55, "Surname1"),
+                "Surname1", new Student(50, "Surname1"),
                 "Surname2", new Student(70, "Surname2"),
                 "Surname3", new Student(75, "Surname3")
         );
