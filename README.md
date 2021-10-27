@@ -1,3 +1,4 @@
-# job4j_design
-[![Build Status](https://app.travis-ci.com/SemykinRU/job4j_design.svg?branch=master)](https://app.travis-ci.com/SemykinRU/job4j_design)
-[![codecov](https://codecov.io/gh/SemykinRU/job4j_design/branch/master/graph/badge.svg?token=FT0NDS2B7L)](https://codecov.io/gh/SemykinRU/job4j_design)
+# job4j_tracker
+
+[![Build Status](https://travis-ci.com/SemykinRU/job4j_tracker.svg?branch=master)](https://travis-ci.com/SemykinRU/job4j_tracker)
+[![codecov](https://codecov.io/gh/SemykinRU/job4j_tracker/branch/master/graph/badge.svg?token=PF0KGX6Q0J)](https://codecov.io/gh/SemykinRU/job4j_tracker)
