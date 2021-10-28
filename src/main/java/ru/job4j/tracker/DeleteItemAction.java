@@ -13,9 +13,9 @@ public class DeleteItemAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store memTracker) {
         int id = input.askInt("Enter id: ");
-        if (tracker.delete(id)) {
+        if (memTracker.delete(id)) {
             System.out.println("Заявка удалена успешно.");
         } else {
             System.out.println("Ошибка удаления заявки.");
