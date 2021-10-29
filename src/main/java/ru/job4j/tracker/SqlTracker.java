@@ -2,6 +2,7 @@ package ru.job4j.tracker;
 
 import java.io.InputStream;
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -42,13 +43,11 @@ public class SqlTracker implements Store {
 
     @Override
     public Item add(Item item) {
-        long millis = System.currentTimeMillis();
-        Timestamp timestamp = new Timestamp(millis);
         try (PreparedStatement statement =
                      cn.prepareStatement("insert into items(name, created) values (?, ?)",
                              Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getName());
-            statement.setTimestamp(2, timestamp);
+            statement.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
             statement.execute();
             try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
@@ -65,8 +64,10 @@ public class SqlTracker implements Store {
     public boolean replace(int id, Item item) {
         boolean result = false;
         try (PreparedStatement statement =
-                     cn.prepareStatement(String.format("update items set name = ? where id = %d", id))) {
+                     cn.prepareStatement("update items set name = ?, created = ? where id = ?")) {
             statement.setString(1, item.getName());
+            statement.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
+            statement.setInt(3, id);
             result = statement.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();
@@ -78,7 +79,8 @@ public class SqlTracker implements Store {
     public boolean delete(int id) {
         boolean result = false;
         try (PreparedStatement statement =
-                     cn.prepareStatement(String.format("delete from items where id = %d", id))) {
+                     cn.prepareStatement("delete from items where id = ?")) {
+            statement.setInt(1, id);
             result = statement.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();
@@ -93,8 +95,11 @@ public class SqlTracker implements Store {
                      cn.prepareStatement("select * from items")) {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
-                    items.add(new Item(resultSet.getInt("id"),
-                            resultSet.getString("name")));
+                    Item item = new Item(resultSet.getInt("id"),
+                            resultSet.getString("name"));
+                    item.setCreated(resultSet.getTimestamp("created").toLocalDateTime());
+                    items.add(item);
+
                 }
             }
         } catch (Exception e) {
@@ -107,11 +112,14 @@ public class SqlTracker implements Store {
     public List<Item> findByName(String key) {
         List<Item> items = new ArrayList<>();
         try (PreparedStatement statement =
-                     cn.prepareStatement(String.format("select * from items where name like '%s'", key))) {
+                     cn.prepareStatement("select * from items where name like ?")) {
+            statement.setString(1, key);
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
-                    items.add(new Item(resultSet.getInt("id"),
-                            resultSet.getString("name")));
+                    Item item = new Item(resultSet.getInt("id"),
+                            resultSet.getString("name"));
+                    item.setCreated(resultSet.getTimestamp("created").toLocalDateTime());
+                    items.add(item);
                 }
             }
         } catch (Exception e) {
@@ -124,11 +132,13 @@ public class SqlTracker implements Store {
     public Item findById(int id) {
         Item item = new Item();
         try (PreparedStatement statement =
-                     cn.prepareStatement(String.format("select * from items where id = %d", id))) {
+                     cn.prepareStatement("select * from items where id = ?")) {
+            statement.setInt(1, id);
             try (ResultSet resultSet = statement.executeQuery()) {
-                while (resultSet.next()) {
+                if (resultSet.next()) {
                     item.setId(resultSet.getInt("id"));
                     item.setName(resultSet.getString("name"));
+                    item.setCreated(resultSet.getTimestamp("created").toLocalDateTime());
                 }
             }
         } catch (Exception e) {

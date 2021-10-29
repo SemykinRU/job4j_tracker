@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -34,6 +35,10 @@ public class Item implements Comparable<Item> {
 
     public LocalDateTime getCreated() {
         return this.created;
+    }
+
+    public void setCreated(LocalDateTime localDateTime) {
+        this.created = localDateTime;
     }
 
     public void setName(String name) {
