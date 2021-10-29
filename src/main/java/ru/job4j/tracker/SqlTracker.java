@@ -10,6 +10,10 @@ public class SqlTracker implements Store {
 
     private Connection cn;
 
+    public SqlTracker(Connection connection) {
+        cn = connection;
+    }
+
     public SqlTracker() {
         init();
     }
