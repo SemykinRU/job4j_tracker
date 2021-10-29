@@ -84,7 +84,29 @@ public class SqlTrackerTest {
         Item item1 = new Item("newItem");
         tracker.add(item);
         assertTrue(tracker.replace(item.getId(), item1));
+    }
+
+    @Test
+    public void whenSaveItemAndReplaceItemAndFindItemByIdThen() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item 1");
+        Item item1 = new Item("newItem");
+        tracker.add(item);
+        tracker.replace(item.getId(), item1);
         assertThat(tracker.findById(item.getId()).getName(), is(item1.getName()));
+    }
+
+    @Test
+    public void whenAddAddAddItemThenFindByAllItems() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item 1");
+        Item item1 = new Item("item 2");
+        Item item2 = new Item("item 3");
+        tracker.add(item);
+        tracker.add(item1);
+        tracker.add(item2);
+        List<Item> items = List.of(item, item1, item2);
+        assertThat(tracker.findAll(), is(items));
     }
 
 }
