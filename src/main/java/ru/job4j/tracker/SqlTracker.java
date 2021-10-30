@@ -124,7 +124,7 @@ public class SqlTracker implements Store {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return items.size() > 0 ? items : null;
+        return items;
     }
 
     @Override
@@ -138,6 +138,8 @@ public class SqlTracker implements Store {
                     item.setId(resultSet.getInt("id"));
                     item.setName(resultSet.getString("name"));
                     item.setCreated(resultSet.getTimestamp("created").toLocalDateTime());
+                } else {
+                    return null;
                 }
             }
         } catch (Exception e) {

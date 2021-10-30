@@ -69,9 +69,9 @@ public class SqlTrackerTest {
     }
 
     @Test
-    public void whenFindByNameReturnNullThen() {
+    public void whenFindByIdReturnNullThen() {
         SqlTracker tracker = new SqlTracker(connection);
-        assertNull(tracker.findByName("item"));
+        assertNull(tracker.findById(1));
     }
 
     @Test
