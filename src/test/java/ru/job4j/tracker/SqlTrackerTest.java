@@ -11,8 +11,7 @@ import java.util.List;
 import java.util.Properties;
 
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class SqlTrackerTest {
 
@@ -67,6 +66,12 @@ public class SqlTrackerTest {
         tracker.add(item2);
         List<Item> items = List.of(item, item1, item2);
         assertThat(tracker.findByName(item.getName()), is(items));
+    }
+
+    @Test
+    public void whenFindByNameReturnNullThen() {
+        SqlTracker tracker = new SqlTracker(connection);
+        assertNull(tracker.findByName("item"));
     }
 
     @Test
